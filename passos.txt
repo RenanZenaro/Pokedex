@@ -3,5 +3,9 @@ git config --global user.name RenanZenaro
 git config --global user.email renanzenaro@hotmail.com
 
 
-criar um projeto MVC:
+Criar um projeto MVC:
 dotnet new mvc -o Pokedex (caso já tenha a pasta não precisa fazer)
+
+Para executar o projeto:
+cd Pokedex
+dotnet watch run
