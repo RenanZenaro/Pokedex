@@ -2,6 +2,13 @@
 @{
     ViewData["Title"] = "Home";
     var tipos = (List<Tipo>)ViewData["Tipos"];
+        string Cor(string nome)
+        {
+            return tipos
+                .Where(t => t.Nome == nome)
+                .Select(t => t.Cor)
+                .FirstOrDefault();
+        }
 }
 
 <section class="pt-5 pb-3 text-center container">
@@ -16,7 +23,7 @@
             @foreach (var tipo in tipos)
             {    
                 <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
-                    style="background-color:#@tipo.Cor">@tipo.Nome</button>
+                    style="background-color:@tipo.Cor">@tipo.Nome</button>
             }    
             </div>
         </div>
@@ -31,7 +38,7 @@
             @foreach (var pokemon in Model)
             {
                 <!-- Card Pokemon - Inicio -->
-                <div class="col">
+                <div class="col" onclick="window.location = '/Home/Details/@pokemon.Numero'">
                     <div class="card shadow-sm cursor-pointer">
                         <img src="@pokemon.Imagem" class="card-img-top" width="100%" height="300" alt="Bulbasaur" />
                         <div class="card-body">
@@ -40,7 +47,7 @@
                             <div class="btn-group">
                                 @foreach (var tipo in pokemon.Tipo)
                                 {
-                                <a href="#" class="btn my-2 text-white" style="background-color:#7c5">@tipo</a>
+                                <a href="#" class="btn my-2 text-white" style="background-color:@Cor(tipo)">@tipo</a>
                                 }
                             </div>
                         </div>
